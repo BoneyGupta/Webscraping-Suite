@@ -49,6 +49,7 @@ class StartTest:
             t.start()
             t.join(timeout=5)
             os.chdir('..')
+            time.sleep(5)
 
         # Create Playwright objects for browser, browser-context and page
         browser = select_browser(self.pw, td.browser, td.headless, td.cdp)
