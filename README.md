@@ -1,42 +1,48 @@
-Automation Test Suite
+# Automation Test Suite
 
- Why this testing suite?
- • This project is a one stop shop for all automation needs like web testing, web scapping, monitoring and data population using simple commands. 
- • It enhances flexibility of maintaining the continuity of data, in lengthy automation scenarios through excel sheet.
- • The excel tables and predefined columns makes it easy to visualize the dataflow.
- • Suite is useful in simplifying the test and flow management in most scenarios, for those having no code knowledge.
- • The available source code can be altered using minimum steps.
- • Data is generated sequentially in logs and json files in easy to reuse format.
- • Pytest and AI is in queue. Possibility of exploring similar features are endless.
- 
- Will this work for me?
- • This suite can cater from simplest to highly complex programs. Features to add short code snippets in excel itself is inbuilt. Any user with minimal 
-knowledge of Python can use the feature as entire automation is handled by the application.
- • New features are being developed to minimise coding requirement for user and maximise flexibility & functionality in excel sheet.
- 
- Tech?
- • The code engages with browser automation using Playwright. Possiblities are being explored to support Selenium, API testing and mobile testing
- (Appium) using the same excel format. 
+## Introduction
 
+This project is a one-stop solution for all automation needs, including web testing, web scraping, monitoring, and data population using simple commands. The suite is designed to be flexible and user-friendly, allowing automation to be managed through Excel sheets, even for users with minimal coding experience.
 
-Step 1: First steps to start the process											
-											
-1)	Go the the automation testing suite directory >> open excel directory										
-2)	Open the Test.xlsx for your first program( you can refer to 'Template.xlsx' and 'Automation Test Suite Commands.xlsx')										
-  	Presently, only the excel file named as 'Test.xlsx' will be run for automation.										
-3)	A pre-filled sheets will be present for your aide.										
-4)	There are three required sheets( Details, Sheet having 'test' in its name and Dropdown) for the execution of test cases.										
-  	Update the name of all the sheets which are up for testing with 'test' as prefix. 										
-											
-All the sheets and fields are described with the help of test case: amazon product page details										
-											
-Step 2: Details Entry			Open the 'Details' sheet in 'Test.xlsx								
-				
-Field entry options:	Description:						
-Test Name	(Any alphanumeric value):	Declares the name of the Test						
-Browser	(Chrome, Firefox, Edge):	Select a browser						
-Website	(Complete website url):	Website names should be complete with https:// or similar prefix						
-Headless	(TRUE, FALSE):	Headless testing is a testing which allows the browser to run in the backgroud without GUI.						
-cdp	(TRUE, FALSE):	cdp is required when we want to work with already logged on browser with wesites which requires login or captcha. Do not support Headless testing
-													
-											
+[GitHub Repository](https://github.com/BoneyGupta/WebScrappingSuite)
+
+## Features
+
+- **Easy Automation:** The suite allows users to automate complex tasks such as web testing and scraping using predefined Excel sheets.
+- **No Coding Required:** It simplifies test and flow management with minimal coding knowledge needed.
+- **Data Management:** Excel tables and predefined columns make it easy to visualize and maintain data continuity in lengthy automation scenarios.
+- **Flexible Logs:** Data is generated sequentially in logs and JSON files for easy reuse.
+- **Customizable Code:** The available source code can be altered using simple steps for different use cases.
+- **Minimal Coding Effort:** Features are being developed to further minimize coding requirements and maximize flexibility and functionality in Excel.
+
+## Why Use This Suite?
+
+- Supports simple to highly complex automation programs.
+- Includes features to add short code snippets directly into Excel.
+- Designed for users with minimal Python knowledge.
+- The entire automation is handled by the application, with easy-to-follow steps.
+
+## Technology
+
+- **Playwright for Browser Automation:** Currently using Playwright, with future plans to support Selenium, API testing, and mobile testing (Appium).
+- **Future Enhancements:** Pytest and AI integrations are in development, with more features planned to enhance functionality and minimize coding.
+
+## How to Get Started
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/BoneyGupta/WebScrappingSuite.git
+    ```
+2. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+3. Follow the instructions in the `README.md` file to begin setting up your automation tasks.
+
+## Contribution
+
+Feel free to contribute by forking the repository and submitting pull requests. New features are always welcome!
+
+---
+
+Developed by **Aaryaman Gupta**, 8-Sep-2024.
