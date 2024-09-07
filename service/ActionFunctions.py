@@ -29,22 +29,22 @@ def execute_code_get_data(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
     assertion = tr.assertion.lower()
 
     if tr.action == "get attribute":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).get_attribute(\"{tr.value}\")")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).get_attribute(\"{tr.value}\")")
         data = page.locator(locator).nth(nth).get_attribute(f"{tr.value}")
     elif tr.action == "is checked":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).is_checked()")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).is_checked()")
         data = page.locator(locator).nth(nth).is_checked()
     elif tr.action == "is disabled":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).is_disabled()")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).is_disabled()")
         data = page.locator(locator).nth(nth).is_disabled()
     elif tr.action == "is visible":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).is_visible")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).is_visible")
         data = page.locator(locator).nth(nth).is_visible()
     elif tr.action == "is hidden":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).is_hidden()")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).is_hidden()")
         data = page.locator(locator).nth(nth).is_hidden()
     elif tr.action == "is enabled":
-        logs.code_prog.info(f"page.locator(\"{locator}\").nth({nth}).is_enabled()")
+        logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).is_enabled()")
         data = page.locator(locator).nth(nth).is_enabled()
     elif tr.action == "wait for":
         pass
@@ -63,19 +63,16 @@ def execute_code_get_data(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
         logs.code_prog.info(f"data = page.locator(\"{locator}\").nth({nth}).inner_text()")
         data = page.locator(locator).nth(nth).inner_text()
     elif tr.action == "text content":
-        logs.code_prog.info(f"data = page.wait_for_selector(\"{tr.locator}\", timeout={tr.timeout}).text_content()")
-        page.locator(tr.locator).first.wait_for(timeout=tr.timeout)
-        data = page.locator(tr.locator).first.text_content()
+        logs.code_prog.info(f"data = page.locator({locator}).nth({nth}).text_content()")
+        data = page.locator(locator).nth(nth).text_content()
     elif tr.action == "all inner texts":
         logs.code_prog.info(
-            f"data = page.wait_for_selector(\"{tr.locator}\", timeout={tr.timeout})\ndata = page.locator(\"{tr.locator}\").all_inner_texts()")
-        page.locator(tr.locator).first.wait_for(timeout=tr.timeout)
-        data = page.locator(tr.locator).first.all_inner_texts()
+            f"data = page.locator({locator}).nth({nth}).all_inner_texts()")
+        data = page.locator(locator).nth(nth).all_inner_texts()
     elif tr.action == "all text contents":
         logs.code_prog.info(
-            f"data = page.wait_for_selector(\"{tr.locator}\", timeout={tr.timeout})\ndata = page.locator(\"{tr.locator}\").all_text_contents()")
-        page.locator(tr.locator).first.wait_for(timeout=tr.timeout)
-        data = page.locator(tr.locator).first.all_text_contents()
+            f"data = page.locator(\"{locator}\").nth({nth})all_text_contents()")
+        data = page.locator(locator).nth(nth).all_text_contents()
     elif tr.action == "get page url":
         logs.code_prog.info(f"data = page.url")
         data = page.url

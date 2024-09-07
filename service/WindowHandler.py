@@ -48,14 +48,6 @@ def goto_parent_tab(pw: Playwright, page: Page, logs: Logs):
     return send
 
 
-def open_url(pw: Playwright, page: Page, url: str, logs: Logs):
-    logs.log.info(f"(WindowHandler/open_url) {url}")
-    logs.code_prog.info(f"page.goto({url})")
-    page.goto(url)
-    send = {'page': page}
-    return send
-
-
 def close_tab(pw: Playwright, page: Page, logs: Logs):
     logs.log.info(f"(WindowHandler/close_tab)")
     logs.code_prog.info(f"page.close()")

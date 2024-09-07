@@ -142,7 +142,7 @@ def actions(pw: Playwright, page: Page, tr: TestRow, logs: Logs, element):
                 elif action == "loop new tab":
                     receive = open_link_in_new_tab_from_element(pw, page, element, logs)
                 elif action == "open link":
-                    receive = open_url(pw, page, tr.url, logs)
+                    receive = goto_url(pw, page, tr, logs)
                 elif action == "page screenshot":
                     receive = page_screenshot(pw, page, tr, logs)
                 elif action == "element screenshot":
