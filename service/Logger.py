@@ -7,7 +7,7 @@ from utils.Logging import Logging
 class Logs:
     def __init__(self):
         # Create a runtime directory for reports
-        directory = f"Report {time.strftime("%Y-%m-%d %H%M%S")}"
+        directory = f"Report {time.strftime('%Y-%m-%d %H%M%S')}"
         self.directory_path = f"Reports/{directory}"
         try:
             os.mkdir(self.directory_path)

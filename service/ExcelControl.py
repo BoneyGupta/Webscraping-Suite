@@ -90,12 +90,12 @@ class StartTest:
                     print(f"Reference Dictionary: {self.ref_dict}")
                     print(f"Loop Reference Dictionary: {self.ref_dict_loop}")
                     # if not td.cdp:
-                    JsonHandler.create_json_file(f"{self.logs.directory_path}/data{time.strftime("%H%M%S")}.json",
+                    JsonHandler.create_json_file(f"{self.logs.directory_path}/data{time.strftime('%H%M%S')}.json",
                                                  self.data_dict)
                     JsonHandler.create_json_file(
-                        f"{self.logs.directory_path}/reference_data{time.strftime("%H%M%S")}.json", self.ref_dict)
+                        f"{self.logs.directory_path}/reference_data{time.strftime('%H%M%S')}.json", self.ref_dict)
                     JsonHandler.create_json_file(
-                        f"{self.logs.directory_path}/ref_loop_data{time.strftime("%H%M%S")}.json", self.ref_dict_loop)
+                        f"{self.logs.directory_path}/ref_loop_data{time.strftime('%H%M%S')}.json", self.ref_dict_loop)
                     # else:
                     #     self.logs.data.info(self.data_dict)
                     #     self.logs.ref_data.info(self.ref_dict)
