@@ -219,7 +219,7 @@ class StartTest:
         try:
             receive = actions(self.pw, page, tr, self.logs, None)
         except Exception as e:
-            page.screenshot(path=f"{self.logs.directory_path}/screenshot-lce-{time.strftime("%Y-%m-%d %H%M%S")}.png",
+            page.screenshot(path=f"{self.logs.directory_path}/screenshot-lce-{time.strftime('%Y-%m-%d %H%M%S')}.png",
                             timeout=100000)
             raise
         self.logs.code_prog.info(f"element_list: list = page.locator({tr.locator}).all()")
