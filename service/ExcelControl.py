@@ -71,7 +71,7 @@ class StartTest:
                     self.logs.log.info(f"** sheets: Exit Point #2 **")
                     # break
                 except Exception as e:
-                    screenshot_file = f"{self.logs.directory_path}/screenshot-config-{time.strftime("%Y-%m-%d %H%M%S")}.png"
+                    screenshot_file = f"{self.logs.directory_path}/screenshot-config-{time.strftime('%Y-%m-%d %H%M%S')}.png"
                     self.logs.log.critical(f"Sheet: {self.xlwb.sheet_names[i]}\n Screenshot: {screenshot_file}")
                     page.screenshot(path=screenshot_file, timeout=100000)
                     self.logs.log.error(f"{self.xlwb.sheet_names[i]} did not process complete. Continue with next test")

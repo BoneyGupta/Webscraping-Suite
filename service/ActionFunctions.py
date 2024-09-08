@@ -118,9 +118,9 @@ def page_screenshot(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
     logs.log.info(f"(ActionFunctions/page_screenshot) {vars(tr)}")
 
     logs.code_prog.info(
-        f"page.wait_for_load_state(\"load\")\npage.screenshot(path=f\"{logs.directory_path}\\pgscrnsht{time.strftime("%H%M%S")}{tr.filepath}\", timeout=100000)")
+        f"page.wait_for_load_state(\"load\")\npage.screenshot(path=f\"{logs.directory_path}\\pgscrnsht{time.strftime('%H%M%S')}{tr.filepath}\", timeout=100000)")
     page.wait_for_load_state("load")
-    page.screenshot(path=f"{logs.directory_path}\\pgscrnsht{time.strftime("%H%M%S")}{tr.filepath}", timeout=100000)
+    page.screenshot(path=f"{logs.directory_path}\\pgscrnsht{time.strftime('%H%M%S')}{tr.filepath}", timeout=100000)
     send = {'page': page}
     return send
 
@@ -129,10 +129,10 @@ def element_screenshot(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
     logs.log.info(f"(ActionFunctions/page_screenshot) {vars(tr)}")
 
     logs.code_prog.info(
-        f"page.wait_for_load_state(\"load\")\nelement = page.locator(\"{tr.locator}\")\nelement.screenshot(path=f\"{logs.directory_path}\\elescrnsht{time.strftime("%H%M%S")}{tr.filepath}\")")
+        f"page.wait_for_load_state(\"load\")\nelement = page.locator(\"{tr.locator}\")\nelement.screenshot(path=f\"{logs.directory_path}\\elescrnsht{time.strftime('%H%M%S')}{tr.filepath}\")")
     page.wait_for_load_state("load")
     element = page.locator(tr.locator)
-    element.screenshot(path=f"{logs.directory_path}\\elescrnsht{time.strftime("%H%M%S")}{tr.filepath}")
+    element.screenshot(path=f"{logs.directory_path}\\elescrnsht{time.strftime('%H%M%S')}{tr.filepath}")
     send = {'page': page}
     return send
 
