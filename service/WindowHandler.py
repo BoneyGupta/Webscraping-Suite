@@ -1,5 +1,4 @@
 from playwright.sync_api import Page, Playwright, BrowserContext, expect
-from selenium import webdriver
 
 from entity.ExcelData import TestRow
 from service.Logger import Logs

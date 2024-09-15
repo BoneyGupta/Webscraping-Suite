@@ -18,8 +18,6 @@ def open_browser():
     except OSError as e:
         print(f"Error running command: {e}")
 
-    os.system("exit")
-
 
 def run(pw: Playwright) -> None:
     print("Start Test")
@@ -59,8 +57,8 @@ start_time = time.time()
 with sync_playwright() as playwright:
     run(playwright)
 
+run(sync_playwright())
+
 end_time = time.time()
 elapsed_time = end_time - start_time
 print(f"Elapsed time: {elapsed_time} seconds")
-
-

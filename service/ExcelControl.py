@@ -207,7 +207,7 @@ class StartTest:
         data_dict_element: dict = {}  # Element loop dictionary
         data_dict_element_counter = 0  # Element loop dictionary key name
         temp_row = row + 1  # The row after the row where start loop command is given
-        DEMO_END_VALUE = 3
+        DEMO_END_VALUE = 4
         DEMO_COUNTER = 0
         if tr.stored_value_key != "":
             loop_start_key = tr.stored_value_key  # Module dictionary key name
@@ -354,7 +354,7 @@ class StartTest:
         data_dict_cont: dict = {}  # Dictionary for 'end loop' 'continuous'
         continuous_flag = True
         DEMO_COUNTER_CONTINUOUS = 0  # Only for demo. Comment it otherwise
-        DEMO_END_VALUE_CONTINUOUS = 2
+        DEMO_END_VALUE_CONTINUOUS = 3
         DEMO_CONTINUOUS_FLAG = True
         # --- INITIALIZATION ---
 
