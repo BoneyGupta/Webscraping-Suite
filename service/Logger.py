@@ -8,7 +8,7 @@ class Logs:
     def __init__(self):
 
         # Create a runtime directory for reports
-        directory = f"Report"
+        directory = f"Reports"
         try:
             os.mkdir(directory)
             print("Directory created successfully.")
