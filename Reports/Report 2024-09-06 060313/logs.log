@@ -1,3 +1,0 @@
-2024-09-06 06:03:13,876 -INFO - Logger initialized
-2024-09-06 06:03:13,876 -INFO - StartTest.config: Entry Point #1
-2024-09-06 06:03:13,876 -INFO - StartTest.config: {'file_path': 'excel\\Test.xlsx', 'workbook': <openpyxl.workbook.workbook.Workbook object at 0x000001A6CFA848F0>, 'current_sheet': <Worksheet "test cdp">, 'sheet_count': 4, 'sheet_names': ['Details', 'test cdp', 'Dropdowns', 'amazon product urls']}, {'directory_path': 'Reports/Report 2024-09-06 060313', 'code_prog': <utils.Logging.Logging object at 0x000001A6D0D1BF80>, 'log': <utils.Logging.Logging object at 0x000001A6D105F800>}
