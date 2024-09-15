@@ -1,25 +1,21 @@
 import asyncio
-import contextlib
 import os
-import signal
 import threading
 import time
-import traceback
-from datetime import datetime
 from playwright.async_api import async_playwright
-import telethon
-from playwright.sync_api import Playwright, sync_playwright
-
 from telethon import TelegramClient, events
 
+import IDs
+
 # Your Telegram credentials
-api_id = 21018251
-api_hash = "1aa1a1c66e8add77b747eef95ebbe612"
-bot_token = "6586066480:AAFcCQZlVxpo42Q5qW3CEmpdfFvA6JwBocE"
+api_id = IDs.api_id
+api_hash = IDs.api_hash
+bot_token = IDs.bot_token
 
 # Telegram channel/group ID
-channel_id = -4113496578
-group_id = "CSrlixqCqyVKkir46Pbctz"
+channel_id = IDs.channel_id
+group_id = IDs.group_id
+
 event_queue = asyncio.Queue()
 
 event_number = 0
