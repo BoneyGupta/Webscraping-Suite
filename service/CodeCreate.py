@@ -85,7 +85,7 @@ def actions(pw: Playwright, page: Page, tr: TestRow, logs: Logs, element):
         page = receive['page']
         assert_flag = receive['pass']
     elif assertion != "" and element is not None:
-        receive = execute_assert_using_element(pw, page, tr, assert_dict[condition], logs)
+        receive = execute_assert_using_element(pw, page, tr, assert_element_dict[condition], logs)
         page = receive['page']
         assert_flag = receive['pass']
     else:

@@ -14,13 +14,21 @@ def run(self: Playwright) -> None:
     xlwb = ExcelWorkBook("excel\\Test.xlsx", None, None,
                          None, None)
 
+    # Change Sheet to Test Details
+    xlwb.change_sheet(xlwb.sheet_names.index("Details"))
+
+    # Create Object for test Details
+    td = TestDetails(xlwb)
+
+    print(f"WorkBook Sheets: {xlwb.sheet_names}  ({xlwb.sheet_count})")
+
     # Create Logger object
     logger = Logs()
 
     logger.log.info(f"StartTest.config: Entry Point #1")
     logger.log.info(f"StartTest.config: {vars(xlwb)}, {vars(logger)}")
     start = StartTest(self, xlwb, logger)
-    start.config()
+    start.config(td)
     logger.log.info(f"StartTest.config: Exit Point #1")
 
     xlwb.close_workbook()

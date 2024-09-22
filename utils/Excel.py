@@ -1,6 +1,9 @@
+import time
+
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
 from openpyxl.utils import get_column_letter
+import xlwings as xw
 
 
 class Excel:
@@ -73,17 +76,16 @@ class Excel:
     def close_workbook(self) -> None:
         self.workbook.close()
 
-# # Example usage
-# file_path = '/absolute/path/to/your/excel/file.xlsx'
-# excel_processor = ExcelProcessor(file_path)
+    def recalculate_xl(self):
+        # Open the workbook in Excel
+        wb = xw.Book(self.file_path)
 
-# # Enter data into cells with different styles
-# excel_processor.enter_string(1, 1, "Regular Text")
-# excel_processor.enter_string_with_green_font(2, 2, "Green Font Text")
-# excel_processor.enter_string_with_red_font(3, 3, "Red Font Text")
-# excel_processor.enter_string_with_green_cell_highlight(4, 4, "Green Cell Highlight")
-# excel_processor.enter_string_with_red_cell_highlight(5, 5, "Red Cell Highlight")
+        # Recalculate the entire workbook
+        wb.app.calculate()
 
-# # Save the changes
-# excel_processor.save_workbook()
-# excel_processor.close_workbook()
+        # Save the workbook with recalculated values
+        wb.save(self.file_path)
+        time.sleep(2)
+
+        wb.app.quit()
+        time.sleep(2)

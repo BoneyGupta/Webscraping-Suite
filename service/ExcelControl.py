@@ -29,19 +29,12 @@ class StartTest:
         self.xlwb = xlwb
         self.logs = logs
 
-    def config(self):
+    def config(self, td: TestDetails):
         """
         Driver class for the Excel workbook test cases.
         Can only work with one excel workbook
         :return:
         """
-        # Change Sheet to Test Details
-        self.xlwb.change_sheet(self.xlwb.sheet_names.index("Details"))
-
-        # Create Object for test Details
-        td = TestDetails(self.xlwb)
-
-        print(f"WorkBook Sheets: {self.xlwb.sheet_names}  ({self.xlwb.sheet_count})")
 
         # Run an already logged in browser if cdp is True
         if td.cdp:
@@ -446,7 +439,7 @@ class StartTest:
 
     def conditional_module(self, tr: TestRow, dictionary, logs: Logs):
         # get the Boolean value of the conditional statement and return it
-        self.logs.log.info(f"(ExcelControl/conditonal_module): {tr.conditional_statement} ")
+        self.logs.log.info(f"(ExcelControl/conditional_module): {tr.conditional_statement} ")
         conditional_statement = tr.conditional_statement
         conditional_flag: bool = False
         try:
