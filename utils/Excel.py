@@ -7,9 +7,12 @@ import xlwings as xw
 
 
 class Excel:
-    def __init__(self, file_path: str):
+    def __init__(self, file_path: str, data_only: bool):
         self.file_path = file_path
-        self.workbook = load_workbook(filename=self.file_path)
+        if data_only:
+            self.workbook = load_workbook(filename=self.file_path, data_only=True)
+        else:
+            self.workbook = load_workbook(filename=self.file_path, data_only=False)
         self.current_sheet = self.workbook.active
 
     def get_sheet_count(self) -> int:

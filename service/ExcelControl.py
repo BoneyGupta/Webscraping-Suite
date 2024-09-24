@@ -284,7 +284,10 @@ class StartTest:
                         self.dictionary[tr.conditional_key] = receive['data_dict']
                     # --- UPDATE DICTIONARY (for each element) ---
                 else:
-                    receive = actions(self.pw, page, tr, self.logs, element)
+                    if tr.action == 'loop go to new tab' or tr.action == 'loop open link in new tab' or tr.action == 'loop open link':
+                        receive = actions(self.pw, page, tr, self.logs, element)
+                    else:
+                        receive = actions(self.pw, page, tr, self.logs, None)
                     page = receive['page']
 
                     # *** STORE IN DICTIONARY (for each action) ***
@@ -323,11 +326,11 @@ class StartTest:
                     break
             # --- ASSERTION ---
 
-            # *** DEMO COUNTER *** ends element loop prematurely
-            DEMO_COUNTER += 1
-            if DEMO_COUNTER >= DEMO_END_VALUE:
-                break
-            # --- DEMO COUNTER ---
+            # # *** DEMO COUNTER *** ends element loop prematurely
+            # DEMO_COUNTER += 1
+            # if DEMO_COUNTER >= DEMO_END_VALUE:
+            #     break
+            # # --- DEMO COUNTER ---
 
         # #### finally
         row = temp_row
@@ -337,9 +340,6 @@ class StartTest:
     # --- LOOP CASES ELEMENT ---
 
     def start_loop_module(self, page: Page, tr: TestRow, row: int) -> dict:
-        """
-
-        """
         # *** INITIALIZATION ***
         data_dict_start: dict = {}
         temp_row = row  # Row where 'start loop' command is given
@@ -354,16 +354,16 @@ class StartTest:
         while continuous_flag:
             # #### to persist the loop till 'Assertion' becomes 'False'
 
-            if DEMO_CONTINUOUS_FLAG:
-                # *** DEMO COUNTER *** end continuous loop prematurely
-                if DEMO_COUNTER_CONTINUOUS >= DEMO_END_VALUE_CONTINUOUS:
-                    data_dict_start = data_dict_cont
-                    continuous_flag = False
-                    # ### finally
-                    row = temp_row
-                    send = {'page': page, 'row': row, 'data_dict': data_dict_start}
-                    return send
-                # --- DEMO COUNTER --- break after storing data in loop dictionary
+            # if DEMO_CONTINUOUS_FLAG:
+            #     # *** DEMO COUNTER *** end continuous loop prematurely
+            #     if DEMO_COUNTER_CONTINUOUS >= DEMO_END_VALUE_CONTINUOUS:
+            #         data_dict_start = data_dict_cont
+            #         continuous_flag = False
+            #         # ### finally
+            #         row = temp_row
+            #         send = {'page': page, 'row': row, 'data_dict': data_dict_start}
+            #         return send
+            #     # --- DEMO COUNTER --- break after storing data in loop dictionary
 
             # *** LOOP CASES ELEMENT ***
             self.logs.log.info(f"SLM loop row: {temp_row}")
@@ -378,16 +378,16 @@ class StartTest:
             end_tr = TestRow(self.xlwb, temp_row)
             if end_tr.assertion != "" and "continuous" in end_tr.description:
 
-                # *** DEMO COUNTER *** end continuous loop prematurely
-                if DEMO_COUNTER_CONTINUOUS >= DEMO_END_VALUE_CONTINUOUS:
-                    data_dict_start = data_dict_cont
-                    continuous_flag = False
-                    # ### finally
-                    row = temp_row
-                    send = {'page': page, 'row': row, 'data_dict': data_dict_start}
-                    return send
-                DEMO_COUNTER_CONTINUOUS += 1
-                # --- DEMO COUNTER --- break after storing data in loop dictionary
+                # # *** DEMO COUNTER *** end continuous loop prematurely
+                # if DEMO_COUNTER_CONTINUOUS >= DEMO_END_VALUE_CONTINUOUS:
+                #     data_dict_start = data_dict_cont
+                #     continuous_flag = False
+                #     # ### finally
+                #     row = temp_row
+                #     send = {'page': page, 'row': row, 'data_dict': data_dict_start}
+                #     return send
+                # DEMO_COUNTER_CONTINUOUS += 1
+                # # --- DEMO COUNTER --- break after storing data in loop dictionary
 
                 # *** ASSERTION *** start assertion for end loop continuous
                 receive = dictionaries(page, end_tr.locator, end_tr.nth, end_tr.value, end_tr.assert_value)

@@ -10,13 +10,14 @@ def open_link_in_new_tab(pw: Playwright, page: Page, url: str, logs: Logs):
     new_window = page.context.new_page()
     new_window.goto(url)
     new_window.bring_to_front()
+    page = new_window
     send = {'page': page}
     return send
 
 
-def open_link_in_new_tab_from_element(pw: Playwright, page: Page, element, logs: Logs):
-    logs.log.info(f"(WindowHandler/open_link_in_new_tab_from_element) {element}")
-    msg = f"# Open link in new tab from element"
+def go_to_newly_opened_tab_from_element(pw: Playwright, page: Page, element, logs: Logs):
+    logs.log.info(f"(WindowHandler/go_to_newly_opened_tab_from_element) {element}")
+    msg = f"# go to newly opened tab from element"
     logs.code_prog.info(msg)
     all_before = page.context.pages
     all_after = all_before
@@ -35,6 +36,37 @@ def open_link_in_new_tab_from_element(pw: Playwright, page: Page, element, logs:
         # print(p.title())
         p.bring_to_front()
     send = {'page': p}
+    return send
+
+
+def open_link_in_new_tab_from_element(pw: Playwright, page: Page, element, logs: Logs):
+    logs.log.info(f"(WindowHandler/open_link_in_new_tab_from_element) {element}")
+    msg = f"# Open link in new tab from element"
+    logs.code_prog.info(msg)
+
+    page.keyboard.down("Control")
+    element.click()
+    page.keyboard.up("Control")
+
+    page.wait_for_load_state('load')
+
+    pgs = page.context.pages
+    p: Page = pgs[0]
+    # print("Pages open:")
+    for p in pgs:
+        # print(p.title())
+        p.bring_to_front()
+    send = {'page': p}
+    return send
+
+
+def open_link_from_element(pw: Playwright, page: Page, element, logs: Logs):
+    logs.log.info(f"(WindowHandler/open_link_from_element) {element}")
+    msg = f"# Open link from element"
+    logs.code_prog.info(msg)
+    element.click()
+    page.wait_for_load_state('load')
+    send = {'page': page}
     return send
 
 
@@ -57,7 +89,7 @@ def close_tab(pw: Playwright, page: Page, logs: Logs):
     return send
 
 
-def goto_url(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
+def open_link(pw: Playwright, page: Page, tr: TestRow, logs: Logs):
     logs.log.info(f"(ActionFunctions/goto_url) {vars(tr)}")
     logs.code_prog.info(f"page.goto(\"{tr.url}\")\npage.wait_for_load_state('load')")
     page.goto(tr.url)

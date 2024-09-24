@@ -12,7 +12,7 @@ from service.Logger import Logs
 def run(self: Playwright) -> None:
     # Open Excel WorkBook and create object
     xlwb = ExcelWorkBook("excel\\Test.xlsx", None, None,
-                         None, None)
+                         None, None, True)
 
     # Change Sheet to Test Details
     xlwb.change_sheet(xlwb.sheet_names.index("Details"))

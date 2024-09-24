@@ -3,8 +3,8 @@ from utils.Excel import Excel
 
 
 class ExcelWorkBook(Excel):
-    def __init__(self, file_path: str, sheet_count: None, sheet_names: None, rows: None, columns: None):
-        super().__init__(file_path)
+    def __init__(self, file_path: str, sheet_count: None, sheet_names: None, rows: None, columns: None, data_only):
+        super().__init__(file_path, data_only)
         self.sheet_count = super().get_sheet_count()
         self.sheet_names = super().get_sheet_names()
 

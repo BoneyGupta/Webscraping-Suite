@@ -3,7 +3,7 @@ from playwright.sync_api import expect
 from service.AssertCodes import execute_assert_code, execute_assert_using_element
 from service.ActionFunctions import *
 from service.WindowHandler import *
-from service.WindowHandler import goto_url
+from service.WindowHandler import open_link
 
 
 def actions(pw: Playwright, page: Page, tr: TestRow, logs: Logs, element):
@@ -139,16 +139,18 @@ def actions(pw: Playwright, page: Page, tr: TestRow, logs: Logs, element):
                     receive = goto_parent_tab(pw, page, logs)
                 elif action == "close tab":
                     receive = close_tab(pw, page, logs)
-                elif action == "loop new tab":
+                elif action == "loop go to new tab":
+                    receive = go_to_newly_opened_tab_from_element(pw, page, element, logs)
+                elif action == "loop open link in new tab":
                     receive = open_link_in_new_tab_from_element(pw, page, element, logs)
+                elif action == "loop open link":
+                    receive = open_link_from_element(pw, page, element, logs)
                 elif action == "open link":
-                    receive = goto_url(pw, page, tr, logs)
+                    receive = open_link(pw, page, tr, logs)
                 elif action == "page screenshot":
                     receive = page_screenshot(pw, page, tr, logs)
                 elif action == "element screenshot":
                     receive = element_screenshot(pw, page, tr, logs)
-                elif action == "open url":
-                    receive = goto_url(pw, page, tr, logs)
 
                 page = receive['page']
                 if 'data' in receive:
@@ -191,6 +193,8 @@ def dictionaries(page, locator, nth, value, assert_value):
         "hover": f"page.locator(\"{locator}\").nth({nth}).hover()",
         "select option": f"page.locator(\"{locator}\").nth({nth}).select_option(\"{value}\")",
         "select options": f"page.locator(\"{locator}\").nth({nth}).select_options({value})",
+        "go back": "page.go_back()",
+        "go forward": "page.go_forward()",
         "set input files": None,
         "text content": 1,
         "inner text": 1,
@@ -218,7 +222,9 @@ def dictionaries(page, locator, nth, value, assert_value):
         "open in new tab": 1,
         "parent tab": 1,
         "close tab": 1,
-        "loop new tab": 1,
+        "loop go to new tab": 1,
+        "loop open link in new tab": 1,
+        "loop open link": 1,
         "open link": 1,
         "page screenshot": 1,
         "element screenshot": 1,
