@@ -79,16 +79,16 @@ class StartTest:
                     #     self.logs.log.error(f"{self.xlwb.sheet_names[i]} did not process complete. Continue with next test")
                     #     break
                 finally:
-                    print(f"Data Dictionary: {self.data_dict}")
-                    print(f"Reference Dictionary: {self.ref_dict}")
-                    print(f"Loop Reference Dictionary: {self.ref_dict_loop}")
+                    # print(f"Data Dictionary: {self.data_dict}")
+                    # print(f"Reference Dictionary: {self.ref_dict}")
+                    # print(f"Loop Reference Dictionary: {self.ref_dict_loop}")
                     # if not td.cdp:
-                    JsonHandler.create_json_file(f"{self.logs.directory_path}/data{time.strftime('%H%M%S')}.json",
+                    JsonHandler.create_json_file(f"{self.logs.directory_path}/data{time.strftime('%H%M%S')}{self.xlwb.get_current_sheet_name()}.json",
                                                  self.data_dict)
                     JsonHandler.create_json_file(
-                        f"{self.logs.directory_path}/reference_data{time.strftime('%H%M%S')}.json", self.ref_dict)
+                        f"{self.logs.directory_path}/reference_data{time.strftime('%H%M%S')}{self.xlwb.get_current_sheet_name()}.json", self.ref_dict)
                     JsonHandler.create_json_file(
-                        f"{self.logs.directory_path}/ref_loop_data{time.strftime('%H%M%S')}.json", self.ref_dict_loop)
+                        f"{self.logs.directory_path}/ref_loop_data{time.strftime('%H%M%S')}{self.xlwb.get_current_sheet_name()}.json", self.ref_dict_loop)
                     # else:
                     #     self.logs.data.info(self.data_dict)
                     #     self.logs.ref_data.info(self.ref_dict)
@@ -119,7 +119,7 @@ class StartTest:
             conditional_flag = False
             if tr.conditional_statement != "":
                 receive = self.conditional_module(tr, self.dictionary, self.logs)
-                if not receive['conditional_flag']:
+                if receive['conditional_flag']:
                     conditional_flag = True
             # --- Conditional Statement ---
 

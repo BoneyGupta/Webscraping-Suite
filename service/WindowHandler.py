@@ -44,18 +44,25 @@ def open_link_in_new_tab_from_element(pw: Playwright, page: Page, element, logs:
     msg = f"# Open link in new tab from element"
     logs.code_prog.info(msg)
 
+    all_before = page.context.pages
+    all_after = all_before
+
     page.keyboard.down("Control")
     element.click()
     page.keyboard.up("Control")
 
-    page.wait_for_load_state('load')
-
+    temp_page = page.context.new_page()
+    temp_page.goto("https://www.google.com")
+    while len(all_after) <= (len(all_before) + 1):
+        all_after = page.context.pages
+    temp_page.close()
     pgs = page.context.pages
     p: Page = pgs[0]
     # print("Pages open:")
     for p in pgs:
         # print(p.title())
         p.bring_to_front()
+
     send = {'page': p}
     return send
 
