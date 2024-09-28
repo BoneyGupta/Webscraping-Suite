@@ -22,7 +22,17 @@ if not exist "%destination_folder%" (
     mkdir "%destination_folder%"
 )
 
-:: Step 2: Move and rename the file
+:: Step 2: Check if a file with the same name already exists in the destination folder
+if exist "%destination_file%" (
+    set /p overwrite="File '%new_filename%.xlsx' already exists. Do you want to overwrite it? (y/n): "
+    if /i "!overwrite!" neq "y" (
+        echo Operation canceled by the user.
+        pause
+        exit /b
+    )
+)
+
+:: Step 3: Move and rename the file
 move "%source_file%" "%destination_file%"
 
 :: Check if the move command was successful
