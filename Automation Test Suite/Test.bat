@@ -10,6 +10,8 @@ if exist "%file_path%" (
     start "" "%file_path%"
 ) else (
     echo Test.xlsx does not exist in the current directory. Create a New Test
+    pause
+    exit /b
 )
 
 exit

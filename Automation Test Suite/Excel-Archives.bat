@@ -1,7 +1,7 @@
 @echo off
 
 :: Define the path to the excel folder
-set "excel_folder=%~dp0..\excel"
+set "excel_folder=%~dp0..\excel archives"
 
 :: Check if the excel folder exists
 if not exist "%excel_folder%" (
