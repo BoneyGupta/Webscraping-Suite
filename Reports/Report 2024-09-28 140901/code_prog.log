@@ -1,0 +1,5 @@
+Logger initialized
+page.get_by_title("Search in").select_option("search-alias=electronics")
+page.locator("//input[@id='twotabsearchtextbox']").nth(0).fill("Smartphone")
+page.locator("//input[@id='nav-search-submit-button']").nth(0).click()
+time.sleep(5)

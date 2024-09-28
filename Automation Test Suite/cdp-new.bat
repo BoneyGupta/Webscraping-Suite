@@ -1,7 +1,7 @@
 @echo off
 
 :: Step 1: Install Chrome Browser (this assumes the Chrome installer is in the same directory as the batch file)
-set CHROME_INSTALLER=Installer\ChromeSetup.exe
+set CHROME_INSTALLER=..\Installer\ChromeSetup.exe
 
 :: Check if the Chrome installer exists
 if not exist %CHROME_INSTALLER% (

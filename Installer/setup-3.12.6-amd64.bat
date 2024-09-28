@@ -84,6 +84,70 @@ if %errorLevel% NEQ 0 (
     exit /b
 )
 
-echo Python 3.12.6 installed successfully and added to the PATH.
+echo Python 3.12.6 and its libraries installed successfully and added to the PATH.
+
+setlocal
+
+:: Step 1: Create a new folder named 'Automation Test Suite' on the Desktop
+set "desktop=%USERPROFILE%\Desktop"
+set "new_folder=%desktop%\Automation Test Suite"
+
+if not exist "%new_folder%" (
+    mkdir "%new_folder%"
+    echo Created 'Automation Test Suite' folder on the Desktop.
+) else (
+    echo 'Automation Test Suite' folder already exists on the Desktop.
+)
+
+cd ..
+
+:: Step 2: Create a shortcut for the 'Automation Test Suite' folder in the current directory inside 'Automation Test Suite'
+set "ATS_folder=%CD%\Automation Test Suite"
+set "shortcut_ATS=%new_folder%\Automation Test Suite.lnk"
+
+if exist "%ATS_folder%" (
+    echo Creating shortcut for the 'Automation Test Suite' folder from current directory...
+    powershell "$ws = New-Object -ComObject WScript.Shell; $s = $ws.CreateShortcut('%shortcut_ATS%'); $s.TargetPath = '%ATS_folder%'; $s.Save()"
+    echo Shortcut to 'Automation Test Suite' folder created.
+) else (
+    echo 'Automation Test Suite' folder does not exist in the current directory.
+)
+
+
+:: Define source and target files
+set "source=excel\Template.xlsx"
+set "target=excel\Test.xlsx"
+
+:: Check if the source file exists
+if not exist "%source%" (
+    echo The source file Template.xlsx does not exist.
+    pause
+    exit /b
+)
+
+:: Check if the target file Test.xlsx already exists
+if exist "%target%" (
+    echo WARNING: Test.xlsx already exists.
+    choice /m "Do you want to overwrite it? (Y/N)" /c YN /n
+    if errorlevel 2 (
+        echo Operation cancelled by the user.
+        pause
+        exit /b
+    )
+)
+
+:: Copy the Template.xlsx to Test.xlsx
+copy "%source%" "%target%" >nul
+if %errorLevel% NEQ 0 (
+    echo Failed to copy Template.xlsx to Test.xlsx.
+    pause
+    exit /b
+)
+
+echo Successfully copied Template.xlsx to Test.xlsx.
+
+:: Open the new Test.xlsx file
+start "" "%target%"
+
 pause
 exit /b

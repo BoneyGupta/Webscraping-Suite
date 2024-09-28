@@ -1,7 +1,0 @@
-pip install pytest
-pip install playwright
-playwright install 
-playwright codegen 
-
-pytest --headed --browser-channel chrome --browser=firefox --slowmo=400 --device="iphone 11" --video=retain-on-failure --screenshots=only-on-failure --output=test_results --base-url=https://www.google.com
-

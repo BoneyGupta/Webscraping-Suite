@@ -1,0 +1,31 @@
+2024-09-28 14:09:01,409 -INFO - Logger initialized
+2024-09-28 14:09:01,410 -INFO - StartTest.config: Entry Point #1
+2024-09-28 14:09:01,410 -INFO - StartTest.config: {'file_path': 'excel\\Test.xlsx', 'workbook': <openpyxl.workbook.workbook.Workbook object at 0x0000016F84914890>, 'current_sheet': <Worksheet "Details">, 'sheet_count': 8, 'sheet_names': ['Details', 'Dropdown', 'Page Elements', 'Queries', 'template', 'amazon product urls test', 'amazon product page details', 'remaining pages']}, {'directory_path': 'Reports/Report 2024-09-28 140901', 'code_prog': <utils.Logging.Logging object at 0x0000016F84DC5BE0>, 'log': <utils.Logging.Logging object at 0x0000016F8383C1D0>}
+2024-09-28 14:09:08,724 -INFO - Sheet loop number: 0
+2024-09-28 14:09:08,726 -INFO - Sheet loop number: 1
+2024-09-28 14:09:08,726 -INFO - Sheet loop number: 2
+2024-09-28 14:09:08,726 -INFO - Sheet loop number: 3
+2024-09-28 14:09:08,726 -INFO - Sheet loop number: 4
+2024-09-28 14:09:08,727 -INFO - Sheet loop number: 5
+2024-09-28 14:09:08,727 -INFO - ** sheets: Entry Point #2 ** amazon product urls test
+2024-09-28 14:09:08,727 -INFO - Sheet row: 3
+2024-09-28 14:09:08,727 -INFO - (ExcelControl/execute_module): {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 1, 'description': '', 'execute': 'page.get_by_title("Search in").select_option("search-alias=electronics")', 'locator': '', 'action': '', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': '', 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''},
+2024-09-28 14:09:08,728 -INFO - (ActionFunctions/execute_code) page.get_by_title("Search in").select_option("search-alias=electronics")
+2024-09-28 14:09:09,440 -INFO - Sheet row: 4
+2024-09-28 14:09:09,441 -INFO - Working with Actions in with row details: {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 2, 'description': 'Enter Search Value', 'execute': '', 'locator': '//input[@id="twotabsearchtextbox"]', 'action': 'fill', 'value': 'Smartphone', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': 30000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:09,585 -INFO - (ActionFunctions/execute_code) page.locator("//input[@id='twotabsearchtextbox']").nth(0).fill("Smartphone")
+2024-09-28 14:09:09,690 -INFO - For 4: Wait(True), Assert(True), Action(True) data:{'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 2, 'description': 'Enter Search Value', 'execute': '', 'locator': '//input[@id="twotabsearchtextbox"]', 'action': 'fill', 'value': 'Smartphone', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': 30000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:09,690 -INFO - Sheet row: 5
+2024-09-28 14:09:09,691 -INFO - Working with Actions in with row details: {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 3, 'description': 'Click Search', 'execute': '', 'locator': "//input[@id='nav-search-submit-button']", 'action': 'click', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': 15000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:09,768 -INFO - (ActionFunctions/execute_code) page.locator("//input[@id='nav-search-submit-button']").nth(0).click()
+2024-09-28 14:09:10,237 -INFO - For 5: Wait(True), Assert(True), Action(True) data:{'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 3, 'description': 'Click Search', 'execute': '', 'locator': "//input[@id='nav-search-submit-button']", 'action': 'click', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': 15000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:10,237 -INFO - Sheet row: 6
+2024-09-28 14:09:10,238 -INFO - (ExcelControl/execute_module): {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 4, 'description': '', 'execute': 'time.sleep(5)', 'locator': '', 'action': '', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': '', 'timeout': '', 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''},
+2024-09-28 14:09:10,238 -INFO - (ActionFunctions/execute_code) time.sleep(5)
+2024-09-28 14:09:15,239 -INFO - Sheet row: 7
+2024-09-28 14:09:15,239 -INFO - Start Loop Module(sheets): Entry Point #3 {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 5, 'description': 'start loop 1', 'execute': '', 'locator': '.s-pagination-next', 'action': '', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': 'list', 'timeout': 10000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''},7
+2024-09-28 14:09:15,239 -INFO - SLM loop row: 7
+2024-09-28 14:09:15,239 -INFO - Loop Cases Element(slm): Entry Point #6 7,.s-pagination-next, {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 5, 'description': 'start loop 1', 'execute': '', 'locator': '.s-pagination-next', 'action': '', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': 'list', 'timeout': 10000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:15,239 -INFO - Working with Actions in with row details: {'xlwb': <entity.ExcelData.ExcelWorkBook object at 0x0000016F8496FE00>, 'element_id': 5, 'description': 'start loop 1', 'execute': '', 'locator': '.s-pagination-next', 'action': '', 'value': '', 'assertion': '', 'condition': '', 'stored_value_key': 'list', 'timeout': 10000, 'url': '', 'filepath': '', 'assert_value': '', 'nth': '', 'conditional_key': '', 'conditional_statement': ''}
+2024-09-28 14:09:15,250 -CRITICAL - Sheet: amazon product urls test
+ Screenshot: Reports/Report 2024-09-28 140901/screenshot-config-2024-09-28 140915.png
