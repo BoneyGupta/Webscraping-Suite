@@ -84,7 +84,18 @@ if %errorLevel% NEQ 0 (
     exit /b
 )
 
+:: Install WebApi requirements.txt
+echo WebApi libraries...
+start /wait pip install -r ../WebApi/requirements.txt
+
+if %errorLevel% NEQ 0 (
+    echo WebApi requirements.txt failed!
+    pause
+    exit /b
+)
+
 echo Python 3.12.6 and its libraries installed successfully and added to the PATH.
+
 
 setlocal
 
@@ -115,7 +126,7 @@ if exist "%ATS_folder%" (
 
 
 :: Define source and target files
-set "source=excel\Template.xlsx"
+set "source=excel archives\Template.xlsx"
 set "target=excel\Test.xlsx"
 
 :: Check if the source file exists
