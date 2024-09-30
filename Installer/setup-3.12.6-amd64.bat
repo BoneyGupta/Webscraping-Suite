@@ -1,8 +1,7 @@
 @echo off
 
 :: Check for administrative privileges
-NET SESSION >nul 2>&1
-if %errorLevel% NEQ 0 (
+net session >nul 2>&1 || (
     echo This script requires administrative privileges. Please run it as an administrator.
     pause
     exit /b
@@ -22,7 +21,7 @@ if %errorLevel% EQU 0 (
 )
 
 :: Check if the installer exists in the current directory
-if not exist %PYTHON_INSTALLER% (
+if not exist "%PYTHON_INSTALLER%" (
     echo Python installer not found! Ensure %PYTHON_INSTALLER% is in the same directory as this script.
     pause
     exit /b
@@ -110,6 +109,33 @@ if not exist "%new_folder%" (
     echo 'Automation Test Suite' folder already exists on the Desktop.
 )
 
+:: Copy logo.ico to the Desktop folder
+copy logo.ico "%new_folder%\folder_icon.ico"
+
+set "desktopIniFile=%new_folder%\desktop.ini"
+
+if not exist "%desktopIniFile%" (
+    echo Creating desktop.ini file...
+    echo [.ShellClassInfo] > "%desktopIniFile%"
+    echo IconFile=folder_icon.ico >> "%desktopIniFile%"
+    echo IconIndex=0 >> "%desktopIniFile%"
+    echo [ViewState] >> "%desktopIniFile%"
+    echo SortAscending=0 >> "%desktopIniFile%"
+    echo FolderType=2 >> "%desktopIniFile%"
+) else (
+    echo desktop.ini file already exists. Appending content...
+    echo >> "%desktopIniFile%"
+    echo [.ShellClassInfo] >> "%desktopIniFile%"
+    echo IconFile=folder_icon.ico >> "%desktopIniFile%"
+    echo IconIndex=0 >> "%desktopIniFile%"
+    echo [ViewState] >> "%desktopIniFile%"
+    echo SortAscending=0 >> "%desktopIniFile%"
+    echo FolderType=2 >> "%desktopIniFile%"
+)
+attrib +s "%new_folder%"
+attrib +h "%new_folder%\desktop.ini"
+
+
 cd ..
 
 :: Step 2: Create a shortcut for the 'Automation Test Suite' folder in the current directory inside 'Automation Test Suite'
@@ -154,6 +180,7 @@ if %errorLevel% NEQ 0 (
     pause
     exit /b
 )
+
 
 echo Successfully copied Template.xlsx to Test.xlsx.
 

@@ -53,6 +53,14 @@ def get_latest_report_folder(directory):
     return latest_subdir
 
 
+@app.get("/docs", include_in_schema=False)
+async def custom_docs():
+    return StreamingResponse(
+        BytesIO(b"Swagger Docs refreshed at: " + datetime.now().isoformat().encode()),
+        media_type="text/plain"
+    )
+
+
 @app.get("/download-excel-archives")
 async def download_excel_archives():
     if not os.path.exists(excel_archives_path):
@@ -82,8 +90,8 @@ async def download_excel_archives():
     )
 
 
-@app.post("/api/upload-test-xlsx")
-async def uploadDocument(file: UploadFile = File(...)):
+@app.post("/upload-test-xlsx")
+async def upload_document(file: UploadFile = File(...)):
     try:
         excel_archives_file_path = excel_archives_path + f"\\{file.filename}"
         excel_folder_file_path = root_dir + "\\excel"
@@ -257,6 +265,8 @@ async def open_logged_in_chrome():
             detail=f"An unexpected error occurred: {str(e)}"
         )
 
-
+port= 8001
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=port)
+
+print(f"Click this link to open FastAPI Swagger Docs http://127.0.0.1:{port}/docs")
