@@ -20,6 +20,13 @@ set DEST_DIR="%~dp0..\\Application"
 :: Check if Chrome directory exists
 if not exist %SOURCE_DIR% (
     echo Chrome is not installed in the default directory.
+    echo Searchin Chrome in User Profile
+    set SOURCE_DIR="%USERPROFILE%\\AppData\\Local\\Google\\Chrome\\Application"
+)
+
+:: Check if Chrome directory exists
+if not exist %SOURCE_DIR% (
+    echo Chrome is not installed in the default directory.
     pause
     exit /b
 )
