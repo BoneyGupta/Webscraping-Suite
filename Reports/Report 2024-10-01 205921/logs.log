@@ -1,0 +1,3 @@
+2024-10-01 20:59:21,384 -INFO - Logger initialized
+2024-10-01 20:59:21,384 -INFO - StartTest.config: Entry Point #1
+2024-10-01 20:59:21,385 -INFO - StartTest.config: {'file_path': 'excel\\Test.xlsx', 'workbook': <openpyxl.workbook.workbook.Workbook object at 0x0000021FD9E18E30>, 'current_sheet': <Worksheet "Details">, 'sheet_count': 4, 'sheet_names': ['Details', 'Dropdown', 'Page Elements', 'remaining pages test']}, {'directory_path': 'Reports/Report 2024-10-01 205921', 'code_prog': <utils.Logging.Logging object at 0x0000021FD7F768D0>, 'log': <utils.Logging.Logging object at 0x0000021FDA28E630>}

@@ -23,8 +23,8 @@ excel_archives_path = root_dir + "\\excel archives"
 reports_directory_path = root_dir + "\\Reports"
 html_pages_path = "./..\\HTML Pages"
 run_ats_bat_file_path = root_dir + "\\Automation Test Suite\\Run-ATS.bat"
-create_new_chrome_for_logged_sessions_bat_file_path = "./Create-New-Chrome-for-Logged-Sessions.bat"
-open_logged_in_chrome_bat_file_path = "./Open-Logged-in-Chrome.bat"
+create_new_chrome_for_logged_sessions_bat_file_path = root_dir + "\\Automation Test Suite\\Create-New-Chrome-for-Logged-Sessions.bat"
+open_logged_in_chrome_bat_file_path = root_dir + "\\Automation Test Suite\\Open-Logged-in-Chrome.bat"
 
 
 def copy_file_to_new_folder(source_file_path, destination_folder, new_filename="Test.xlsx"):
@@ -121,7 +121,7 @@ async def upload_document(file: UploadFile = File(...)):
 
 
 @app.get("/run-ats-and-download-report")
-async def run_bat_and_download_report():
+async def run_ats_and_download_report():
     try:
         try:
             run_bat_file(run_ats_bat_file_path)
@@ -196,7 +196,7 @@ async def download_html_pages():
 
 
 @app.get("/run-ats")
-async def run_ats_bat():
+async def run_ATS():
     try:
         run_bat_file(run_ats_bat_file_path)
     except HTTPException as http_exc:
@@ -265,7 +265,8 @@ async def open_logged_in_chrome():
             detail=f"An unexpected error occurred: {str(e)}"
         )
 
-port= 8001
+
+port = 8001
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=port)
 
