@@ -182,7 +182,7 @@ api_server_start_button.grid(row=0, column=0, columnspan=3, pady=5, sticky="w")
 refresh_button = Button(root, text="Refresh", command=refresh_app)
 refresh_button.grid(row=0, column=3, pady=5, sticky="se")
 
-close_button = Button(root, text="Close", command=root.quit)
+close_button = Button(root, text=" X ", command=root.quit)
 close_button.grid(row=0, column=4, pady=5, sticky="e")
 
 # Excel Archives
@@ -194,7 +194,7 @@ open_excel_archives_button = Button(root, text="Open Folder", command=open_excel
 open_excel_archives_button.grid(row=3, column=0, padx=10, pady=5, sticky="w")
 excel_archives_response_label = Label(root, text="[Response]")
 excel_archives_response_label.grid(row=3, column=1, sticky="w")
-download_excel_archives_api_link = Label(root, text="Test API : Download Excel archives", fg="blue", cursor="hand2")
+download_excel_archives_api_link = Label(root, text="Test API : Download Excel Archives", fg="blue", cursor="hand2")
 download_excel_archives_api_link.bind("<Button-1>", lambda e: open_link(api_url + "/download-excel-archives"))
 download_excel_archives_api_link.grid(row=3, column=2, sticky="w")
 open_excel_archives_link = Label(root, text="Open Excel Archives", fg="blue", cursor="hand2")
@@ -296,40 +296,53 @@ vertical_separator = ttk.Separator(root, orient="vertical")
 vertical_separator.grid(row=0, column=5, rowspan=25, sticky="ns", padx=10)
 
 # Test Bat Files
-bat_heading = Label(root, text="Test Bat Files", font=("Arial", 14))
+bat_heading = Label(root, text="Test Bat Files", font=("Arial", 12, "bold"))
 bat_heading.grid(row=0, column=6, columnspan=3, pady=5, sticky="w")
 
 setup_bat_button = Button(root, text="Setup", command=setup)
 setup_bat_button.grid(row=1, column=6, pady=5, sticky="w")
 
 new_test_button = Button(root, text="New Test", command=new_test)
-new_test_button.grid(row=2, column=6, pady=5, sticky="w")
+new_test_button.grid(row=3, column=6, pady=5, sticky="w")
 
 current_test_button = Button(root, text="Current Test", command=open_current_test_sheet)
-current_test_button.grid(row=3, column=6, pady=5, sticky="w")
+current_test_button.grid(row=4, column=6, pady=5, sticky="w")
 
 run_ats_button = Button(root, text="Run ATS", command=run_ats)
-run_ats_button.grid(row=4, column=6, pady=5, sticky="w")
+run_ats_button.grid(row=5, column=6, pady=5, sticky="w")
 
 save_current_test_sheet_to_archives_button = Button(root, text="Save Test to Archives",
                                                     command=save_current_test_sheet_to_archives)
-save_current_test_sheet_to_archives_button.grid(row=5, column=6, pady=5, sticky="w")
+save_current_test_sheet_to_archives_button.grid(row=7, column=6, pady=5, sticky="w")
 
 get_reports_bat_button = Button(root, text="Get Reports", command=get_reports)
-get_reports_bat_button.grid(row=6, column=6, pady=5, sticky="w")
+get_reports_bat_button.grid(row=8, column=6, pady=5, sticky="w")
 
 get_html_pages_bat_button = Button(root, text="Get HTML Pages", command=get_html_pages)
-get_html_pages_bat_button.grid(row=7, column=6, pady=5, sticky="w")
+get_html_pages_bat_button.grid(row=9, column=6, pady=5, sticky="w")
 
 excel_archives_bat_button = Button(root, text="Get Reports", command=get_excel_archives)
-excel_archives_bat_button.grid(row=8, column=6, pady=5, sticky="w")
+excel_archives_bat_button.grid(row=11, column=6, pady=5, sticky="w")
 
 create_new_chrome_for_logged_sessions_bat_button = Button(root, text="Create New Logged in Chrome",
                                                           command=create_new_chrome_for_logged_session)
-create_new_chrome_for_logged_sessions_bat_button.grid(row=9, column=6, pady=5, sticky="w")
+create_new_chrome_for_logged_sessions_bat_button.grid(row=12, column=6, pady=5, sticky="w")
 
 open_logged_in_chrome_bat_button = Button(root, text="Logged in Chrome", command=open_logged_in_chrome)
-open_logged_in_chrome_bat_button.grid(row=10, column=6, pady=5, sticky="w")
+open_logged_in_chrome_bat_button.grid(row=13, column=6, pady=5, sticky="w")
+
+# Remaining API
+api_heading = Label(root, text="Misc APIs", font=("Arial", 12, "bold"))
+api_heading.grid(row=21, column=6, columnspan=3, pady=5, sticky="w")
+
+run_ats_api_link = Label(root, text="Test API : Run ATS", fg="blue", cursor="hand2")
+run_ats_api_link.bind("<Button-1>", lambda e: open_link(api_url + "/run-ats"))
+run_ats_api_link.grid(row=23, column=6, sticky="w")
+
+html_pages_api_link = Label(root, text="Test API : Download HTML Pages", fg="blue", cursor="hand2")
+html_pages_api_link.bind("<Button-1>", lambda e: open_link(api_url + "/download-html-pages"))
+html_pages_api_link.grid(row=24, column=6, sticky="w")
+
 
 # Start the Tkinter event loop
 root.mainloop()
