@@ -80,8 +80,8 @@ def api_server_start():
 def refresh_app():
     excel_archives_response_label.config(text="[Response]")
     upload_excel_response_label.config(text="[Response]")
-    all_reports_response_label.config(text="[Response]")
     run_and_download_report_response_label.config(text="[Response]")
+    all_reports_response_label.config(text="[Response]")
 
 
 def open_excel_archives():
@@ -164,7 +164,7 @@ def create_new_chrome_for_logged_session():
 
 # Create main window
 root = Tk()
-root.geometry("1000x800")
+root.geometry("1000x650")
 root.title("Button Function with Links and Layout")
 
 # Set window icon (title bar)
@@ -182,7 +182,7 @@ api_server_start_button.grid(row=0, column=0, columnspan=3, pady=5, sticky="w")
 refresh_button = Button(root, text="Refresh", command=refresh_app)
 refresh_button.grid(row=0, column=3, pady=5, sticky="se")
 
-close_button = Button(root, text=" X ", command=root.quit)
+close_button = Button(root, text="Close", command=root.quit)
 close_button.grid(row=0, column=4, pady=5, sticky="e")
 
 # Excel Archives
