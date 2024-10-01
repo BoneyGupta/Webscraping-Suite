@@ -104,6 +104,10 @@ def upload_excel_file():
         upload_excel_response_label.config(text="Process Completed")
 
 
+def upload_excel_via_api():
+    os.startfile("upload.html")
+
+
 def run_and_download_report():
     run_bat_file(run_ats_bat_file_path)
     time.sleep(5)
@@ -213,8 +217,8 @@ upload_excel_button.grid(row=7, column=0, padx=10, pady=5, sticky="w")
 upload_excel_response_label = Label(root, text="[Response]")
 upload_excel_response_label.grid(row=7, column=1, sticky="w")
 upload_excel_api_link = Label(root, text="Test API : Upload Excel Files", fg="blue", cursor="hand2")
-upload_excel_api_link.bind("<Button-1>", lambda e: open_link(api_url + "/upload-test-xlsx"))
 upload_excel_api_link.grid(row=7, column=2, sticky="w")
+upload_excel_api_link.bind("<Button-1>", lambda e: upload_excel_via_api())
 upload_excel_archives_link = Label(root, text="Open Current Test Folder", fg="blue", cursor="hand2")
 upload_excel_archives_link.grid(row=7, column=3, sticky="w", padx=0, pady=5)
 upload_excel_archives_link.bind("<Button-1>", lambda e: open_folder(excel_directory_path))
@@ -225,8 +229,7 @@ separator1.grid(row=8, column=0, columnspan=4, sticky="ew", pady=10)
 run_and_download_report_heading = Label(root, text="Run and Open Reports", font=("Arial", 14))
 run_and_download_report_heading.grid(row=9, column=0, columnspan=3, pady=5, sticky="w")
 run_and_download_report_desc = Label(root,
-                                     text="Runs Test.xlsx/Latest Uploaded Document and opens the report folder .",
-                                     fg="gray")
+                                     text="Runs Test.xlsx/Latest Uploaded Document and opens the report folder .")
 run_and_download_report_desc.grid(row=9, column=2, columnspan=3, sticky="w")
 run_and_download_report_button = Button(root, text="Run", command=run_and_download_report)
 run_and_download_report_button.grid(row=11, column=0, padx=10, pady=5, sticky="w")
@@ -239,7 +242,7 @@ run_and_download_report_api_link.grid(row=11, column=2, sticky="w")
 run_and_download_report_link0 = Label(root, text="Addtitional Links    ---->", fg="black")
 run_and_download_report_link0.grid(row=12, column=0, sticky="w", padx=0, pady=5)
 run_and_download_report_link1 = Label(root, text="Open Latest Report", fg="blue", cursor="hand2")
-run_and_download_report_link1.grid(row=12, column=1, sticky="w", padx=0, pady=5)
+run_and_download_report_link1.grid(row=12, column=1, sticky="e", padx=0, pady=5)
 run_and_download_report_link1.bind("<Button-1>", lambda e: latest_report_folder_link())
 run_and_download_report_link2 = Label(root, text="Open HTML Pages Folder", fg="blue", cursor="hand2")
 run_and_download_report_link2.grid(row=12, column=2, sticky="ew", padx=0, pady=5)
@@ -342,7 +345,6 @@ run_ats_api_link.grid(row=23, column=6, sticky="w")
 html_pages_api_link = Label(root, text="Test API : Download HTML Pages", fg="blue", cursor="hand2")
 html_pages_api_link.bind("<Button-1>", lambda e: open_link(api_url + "/download-html-pages"))
 html_pages_api_link.grid(row=24, column=6, sticky="w")
-
 
 # Start the Tkinter event loop
 root.mainloop()

@@ -3,6 +3,7 @@ import time
 from fastapi import FastAPI, UploadFile, File, HTTPException, status
 import uvicorn
 from starlette.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
 import shutil
 import os
 from fastapi.responses import StreamingResponse
@@ -13,6 +14,16 @@ from datetime import datetime
 import subprocess
 
 app = FastAPI()
+
+
+@app.middleware("http")
+async def cors_middleware(request, call_next):
+    response = await call_next(request)
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type"
+    return response
+
 
 # Get the root directory of your project (assuming it's the parent of `api`)
 root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
