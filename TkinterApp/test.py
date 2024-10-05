@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
+
 def toggle_dark_mode():
     if root['bg'] == 'black':
         # Switch to light mode
@@ -12,6 +13,7 @@ def toggle_dark_mode():
         root.config(bg='black')
         label.config(bg='black', fg='white')
         button.config(bg='gray', fg='white')
+
 
 root = tk.Tk()
 root.title("Tkinter Dark Mode Example")

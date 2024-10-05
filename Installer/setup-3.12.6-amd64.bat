@@ -112,6 +112,9 @@ if not exist "%new_folder%" (
 :: Copy logo.ico to the Desktop folder
 copy logo.ico "%new_folder%\folder_icon.ico"
 
+:: Copy XcelFlows or DesktopApp.bat to Desktop folder
+copy XcelFlows.lnk "%new_folder%\XcelFlows.lnk"
+
 set "desktopIniFile=%new_folder%\desktop.ini"
 
 if not exist "%desktopIniFile%" (
